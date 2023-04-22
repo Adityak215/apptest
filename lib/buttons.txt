@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Flutter FlatButton Example'),
+           ),
+           body: Center(
+              child: Column(children: <Widget>[
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: TextButton(
+                child: const Text(
+                  'Hello there',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                onPressed: () {},
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              color: Colors.blueAccent,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'General Kenobi',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Color.fromARGB(255, 23, 235, 147)),
+                ),
+              ),
+            ),
+            Container(
+            
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+
+              child: ElevatedButton(
+                onPressed: () {},
+                
+                child:const Text(
+                  'Ted, just.. okay. just...',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Color.fromARGB(255, 23, 235, 147)),
+                ))
+              )
+
+             ]
+            )
+           ),
+          bottomNavigationBar:  BottomNavigationBar(  
+             items: const <BottomNavigationBarItem>[  
+              BottomNavigationBarItem(  
+               icon: Icon(Icons.home), 
+                label:'Home bitch',
+                backgroundColor: Colors.green  
+              ),  
+              BottomNavigationBarItem(  
+                icon: Icon(Icons.search),  
+                 label:'Fuck off',
+                backgroundColor: Colors.yellow  
+              ),  
+              BottomNavigationBarItem(  
+                icon: Icon(Icons.person),  
+                 label:'Dont even',
+                backgroundColor: Colors.blue,  
+              ),  
+            ],  
+            type: BottomNavigationBarType.shifting,    
+            selectedItemColor: Colors.black,  
+            iconSize: 40,  
+            elevation: 5  
+
+      ),
+      ),
+    );
+  }
+}
+
+
+
+
+Container(
+                  margin: EdgeInsets.all(25),
+
+                    child: ElevatedButton(
+                     onPressed: () {},
+                
+                      child:Text(
+                     'Ted, just.. okay. just...',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Color.fromARGB(255, 23, 235, 147)),
+                  ), 
+                ),
+              ),
