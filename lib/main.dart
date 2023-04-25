@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePg(), //setting Homepg class as first screen
     );
   }
@@ -24,6 +26,7 @@ class HomePg extends StatefulWidget {
 
 class _HomePgState extends State<HomePg> {
   bool passwordVisible = false;
+  late TextEditingController email, pass;
   @override
   void initState() {
     super.initState();
@@ -33,37 +36,41 @@ class _HomePgState extends State<HomePg> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
-        fontFamily: 'Crunchy Time',
+        fontFamily: 'Sigmar',
         primarySwatch: Colors.cyan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Login Page'),
-          titleTextStyle: const TextStyle(fontFamily: 'Sigmar'),
+          titleTextStyle: const TextStyle(fontFamily: 'Crunchy Time'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextField(
-                  decoration: InputDecoration(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  // controller: ,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.email),
                     hintText: 'Enter Your Username',
+                    labelText: "Username",
                   ),
                 ),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                child: TextField(
+                child: TextFormField(
                   obscureText: passwordVisible,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.password),
                     hintText: "Password",
                     labelText: "Password",
                     helperText: "Password must contain special character",
@@ -92,11 +99,12 @@ class _HomePgState extends State<HomePg> {
                 padding: const EdgeInsets.all(25),
                 child: ElevatedButton(
                   onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SecondScreen()),
-                      );
-                    },
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SecondScreen()),
+                    );
+                  },
                   child: const Text(
                     'Ted, just.. okay. just... Submit',
                     style: TextStyle(
@@ -106,27 +114,6 @@ class _HomePgState extends State<HomePg> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Multi Page Application Page-1"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
         ),
       ),
     );
