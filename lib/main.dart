@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
 
 class HomePg extends StatefulWidget {
   const HomePg({super.key});
@@ -98,17 +101,16 @@ class _HomePgState extends State<HomePg> {
               padding: const EdgeInsets.all(25),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
+                  Navigator.push(context,
                     MaterialPageRoute(
                         builder: (context) => SecondScreen(
                               user: usern.text,
                               pass: pass.text,
-                            )),
-                  );
-                },
-                child: const Text(
-                  'Ted, just.. okay. just... Submit',
+                            )
+                          ),
+                        );
+                      },
+                child: const Text('Ted, just.. okay. just... Submit',
                   style: TextStyle(
                       fontSize: 20.0, color: Color.fromARGB(255, 97, 0, 253)),
                 ),

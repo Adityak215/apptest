@@ -1,0 +1,40 @@
+* to open drawer using Button
+
+onPressed: () {
+                _key.currentState!.openDrawer(); //<-- SEE HERE
+              },
+
+
+* drawer on right Side -
+Wrap the existing Drawer widget inside the Container widget
+Inside the Container widget, add the width parameter and assign the percent 
+of the screen you want the navigation drawer to cover using the MediaQuery. 
+For example, the MediaQuery.of(context).size.width * 0.5 will allow the navigation drawer 
+to open until it reaches 50 percent of the screen’s width
+
+drawer: Container(
+  width: MediaQuery.of(context).size.width * 0.5, //<-- SEE HERE
+  child: Drawer(
+    child: ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      children: [
+        ListTile(
+          leading: Icon(
+            Icons.home,
+          ),
+          title: const Text('Page 1'),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    ),
+  ),
+),
+
+
+
+
+
+
