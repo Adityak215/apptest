@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'attendance.dart';
 import 'personal.dart';
 import 'exam_info.dart';
+import 'dummy.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.user, required this.pass})
@@ -83,6 +84,16 @@ class _SecondScreenState extends State<SecondScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const ExamInfo()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Dummy Page'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Dummy()),
               );
             },
           ),
