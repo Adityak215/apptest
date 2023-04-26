@@ -26,7 +26,8 @@ class HomePg extends StatefulWidget {
 
 class _HomePgState extends State<HomePg> {
   bool passwordVisible = false;
-  late TextEditingController email, pass;
+  final usern = TextEditingController();
+  final pass = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -52,9 +53,10 @@ class _HomePgState extends State<HomePg> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextFormField(
-                  // controller: ,
+                  controller: usern,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.email),
@@ -67,6 +69,7 @@ class _HomePgState extends State<HomePg> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                 child: TextFormField(
+                  controller: pass,
                   obscureText: passwordVisible,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
@@ -102,7 +105,10 @@ class _HomePgState extends State<HomePg> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SecondScreen()),
+                          builder: (context) => SecondScreen(
+                                user: usern.text,
+                                pass: pass.text,
+                              )),
                     );
                   },
                   child: const Text(
