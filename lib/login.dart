@@ -15,7 +15,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Multi Page Application Page-1"),
+          title: const Text("Second Page MF"),
         ),
         body: Center(
             child: Column(
