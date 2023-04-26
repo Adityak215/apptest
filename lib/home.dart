@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'attendance.dart';
+import 'personal.dart';
+import 'exam_info.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.user, required this.pass})
@@ -55,34 +57,37 @@ class _SecondScreenState extends State<SecondScreen> {
               decoration: BoxDecoration(color: Colors.amber),
               child: Text('Drawer for Stuff')),
           ListTile(
-            title: const Text('This thing'),
+            title: const Text('Personal Info'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context) => const Attendance()
-                          ),
-                        );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PersonalInfo()),
+              );
             },
           ),
           ListTile(
-            title: const Text('Next Thing'),
+            title: const Text('Academic Info'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Attendance()),
+              );
             },
           ),
           ListTile(
-            title: const Text('That Thing'),
+            title: const Text('Exam Info'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ExamInfo()),
+              );
             },
           ),
-
         ],
-       )
-      ),
-
-
+      )),
     );
   }
 }

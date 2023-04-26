@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'home.dart';
 
 
 void main() {
@@ -18,21 +18,21 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePg(), //setting Homepg class as first screen
+      home: const LoginPg(), //setting Loginpg class as first screen
     );
   }
 }
 
 
 
-class HomePg extends StatefulWidget {
-  const HomePg({super.key});
+class LoginPg extends StatefulWidget {
+  const LoginPg({super.key});
 
   @override
-  State<HomePg> createState() => _HomePgState();
+  State<LoginPg> createState() => _LoginPgState();
 }
 
-class _HomePgState extends State<HomePg> {
+class _LoginPgState extends State<LoginPg> {
   bool passwordVisible = false;
   final usern = TextEditingController();
   final pass = TextEditingController();
