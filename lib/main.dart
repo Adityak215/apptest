@@ -31,8 +31,9 @@ class LoginPg extends StatefulWidget {
 
 class _LoginPgState extends State<LoginPg> {
   bool passwordVisible = false;
+  bool showkey = false;
   final usern = TextEditingController();
-  final pass = TextEditingController(); 
+  final pass = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -50,6 +51,9 @@ class _LoginPgState extends State<LoginPg> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Visibility(
+                visible: showkey,
+                child: Text('Welcome, "${pass.text}" was your Password')),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
@@ -111,6 +115,21 @@ class _LoginPgState extends State<LoginPg> {
                   'Ted, just.. okay. just... Submit',
                   style: TextStyle(
                       fontSize: 20.0, color: Color.fromARGB(255, 97, 0, 253)),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    showkey = !showkey;
+                  });
+                },
+                child: const Text(
+                  'Show me da money',
+                  style: TextStyle(
+                      fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),
             ),

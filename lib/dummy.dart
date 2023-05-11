@@ -13,25 +13,26 @@ class _DummyState extends State<Dummy> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dummy app bar'),
+        
       ),
 
-      body: Row(
+      body: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children:<Widget>[
           Column(
-            children:const <Widget>[
+            children:<Widget>[
               Icon(Icons.alarm,),
               Text('Alarm'),
             ],
           ),
           Column(
-            children:const <Widget>[
+            children:<Widget>[
               Icon(Icons.android,),
               Text('Android'),
             ],
           ),
           Column(
-            children:const <Widget>[
+            children:<Widget>[
               Icon(Icons.backpack,),
               Text('Backpack'),
             ],
