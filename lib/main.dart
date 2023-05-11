@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -23,8 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
 class LoginPg extends StatefulWidget {
   const LoginPg({super.key});
 
@@ -35,7 +32,7 @@ class LoginPg extends StatefulWidget {
 class _LoginPgState extends State<LoginPg> {
   bool passwordVisible = false;
   final usern = TextEditingController();
-  final pass = TextEditingController();
+  final pass = TextEditingController(); 
   @override
   void initState() {
     super.initState();
@@ -101,16 +98,17 @@ class _LoginPgState extends State<LoginPg> {
               padding: const EdgeInsets.all(25),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
                         builder: (context) => SecondScreen(
                               user: usern.text,
                               pass: pass.text,
-                            )
-                          ),
-                        );
-                      },
-                child: const Text('Ted, just.. okay. just... Submit',
+                            )),
+                  );
+                },
+                child: const Text(
+                  'Ted, just.. okay. just... Submit',
                   style: TextStyle(
                       fontSize: 20.0, color: Color.fromARGB(255, 97, 0, 253)),
                 ),
