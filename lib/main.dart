@@ -13,7 +13,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Sigmar',
-        primarySwatch: Colors.cyan,
+        //primarySwatch: Colors.cyan,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        appBarTheme:  AppBarTheme(
+          
+          //color: Theme.of(context).colorScheme.onPrimary,
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          //foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+        ),
+        useMaterial3: true,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
@@ -44,6 +53,9 @@ class _LoginPgState extends State<LoginPg> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        backgroundColor: Theme.of(context).colorScheme.primary,
+
         title: const Text('Login Page'),
         titleTextStyle: const TextStyle(fontFamily: 'Crunchy Time'),
       ),
@@ -78,7 +90,7 @@ class _LoginPgState extends State<LoginPg> {
                   labelText: "Password",
                   helperText: "Password must contain special character",
                   helperStyle:
-                      const TextStyle(color: Color.fromARGB(255, 10, 39, 225)),
+                       TextStyle(color: Theme.of(context).colorScheme.primary,),
                   suffixIcon: IconButton(
                     icon: Icon(passwordVisible
                         ? Icons.visibility
@@ -102,8 +114,7 @@ class _LoginPgState extends State<LoginPg> {
               padding: const EdgeInsets.all(25),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
+                  Navigator.push(context,
                     MaterialPageRoute(
                         builder: (context) => SecondScreen(
                               user: usern.text,
@@ -111,15 +122,15 @@ class _LoginPgState extends State<LoginPg> {
                             )),
                   );
                 },
-                child: const Text(
+                child: Text(
                   'Ted, just.. okay. just... Submit',
                   style: TextStyle(
-                      fontSize: 20.0, color: Color.fromARGB(255, 97, 0, 253)),
+                      fontSize: 18.0, color: Theme.of(context).colorScheme.primary,),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {

@@ -20,6 +20,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Second Page MF"),
       ),
       body: Center(
@@ -55,9 +56,9 @@ class _SecondScreenState extends State<SecondScreen> {
           child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         children: [
-          const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Text('Drawer for Stuff')),
+           DrawerHeader(
+              decoration: BoxDecoration(color: Theme.of(context).colorScheme.inversePrimary,),
+              child: const Text('Drawer for Stuff')),
           ListTile(
             title: const Text('Personal Info'),
             onTap: () {

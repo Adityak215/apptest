@@ -12,6 +12,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Your Personal Information'),
       ),
 

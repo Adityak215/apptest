@@ -12,6 +12,7 @@ class _TesterState extends State<Tester> {
   Widget build(BuildContext context) {
     return Scaffold(
           appBar: AppBar(
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title:  const Row(
           children: <Widget>[
             Text('Pussy'),

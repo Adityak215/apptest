@@ -12,6 +12,7 @@ class _DummyState extends State<Dummy> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Dummy app bar'),
         
       ),
