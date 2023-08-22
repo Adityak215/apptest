@@ -1,5 +1,7 @@
+import 'package:apptest/myprovider.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+      ChangeNotifierProvider(create: (_)=>Countpro()),
+      ChangeNotifierProvider(create: (_)=>Boolprovider())
+      ],
+      child: MaterialApp(
       theme: ThemeData(
         fontFamily: 'Sigmar',
         //primarySwatch: Colors.cyan,
@@ -27,6 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const LoginPg(), //setting Loginpg class as first screen
+      )
     );
   }
 }
@@ -39,33 +47,47 @@ class LoginPg extends StatefulWidget {
 }
 
 class _LoginPgState extends State<LoginPg> {
-  bool passwordVisible = false;
-  bool showkey = false;
+  
   final usern = TextEditingController();
   final pass = TextEditingController();
   @override
   void initState() {
     super.initState();
-    passwordVisible = true;
+    //passwordVisible = true;
   }
 
   @override
   Widget build(BuildContext context) {
+    //print('everything built');
+    //final visualprovider= Provider.of<Countpro>(context, listen:false); 
+    //this doesnt work for multiple providers.. shoulda known smh.
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Theme.of(context).colorScheme.primary,
-
         title: const Text('Login Page'),
         titleTextStyle: const TextStyle(fontFamily: 'Crunchy Time'),
       ),
+
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          shrinkWrap: true,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Visibility(
-                visible: showkey,
-                child: Text('Welcome, "${pass.text}" was your Password')),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Consumer<Countpro>(builder: (context, value, child) {
+                return Text(value.count.toString(),
+                style: const TextStyle(fontSize: 40),
+                  );
+              },)
+            ),
+            Consumer<Boolprovider>(builder: (context, value, child) {
+              return Visibility(
+                visible: value.showkey,
+                child: //Text(visualprovider.showkey.toString()),
+                Text('Welcome, "${pass.text}" was your Password'),
+                );
+            },),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextFormField(
@@ -78,38 +100,41 @@ class _LoginPgState extends State<LoginPg> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-              child: TextFormField(
-                controller: pass,
-                obscureText: passwordVisible,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  prefixIcon: const Icon(Icons.password),
-                  hintText: "Password",
-                  labelText: "Password",
-                  helperText: "Password must contain special character",
-                  helperStyle:
-                       TextStyle(color: Theme.of(context).colorScheme.primary,),
-                  suffixIcon: IconButton(
-                    icon: Icon(passwordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off),
-                    onPressed: () {
-                      setState(
-                        () {
-                          passwordVisible = !passwordVisible;
+            Consumer<Boolprovider>(builder: (context, value,child){
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  controller: pass,
+                  obscureText: value.passwordVisible,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.password),
+                    hintText: "Password",
+                    labelText: "Password",
+                    helperText: "Password must contain special character",
+                    helperStyle:
+                         TextStyle(color: Theme.of(context).colorScheme.primary,),
+                    suffixIcon: IconButton(
+                      icon: Icon(value.passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        // setState(
+                        //   () {
+                        //     passwordVisible = !passwordVisible;
+                        //   },
+                        // );
+                          value.setpass();
                         },
-                      );
-                    },
+                      ),
+                      alignLabelWithHint: false,
+                      filled: true,
+                    ),
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.done,
                   ),
-                  alignLabelWithHint: false,
-                  filled: true,
-                ),
-                keyboardType: TextInputType.visiblePassword,
-                textInputAction: TextInputAction.done,
-              ),
-            ),
+                );
+            },),
             Padding(
               padding: const EdgeInsets.all(25),
               child: ElevatedButton(
@@ -129,21 +154,39 @@ class _LoginPgState extends State<LoginPg> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    showkey = !showkey;
-                  });
-                },
-                child: const Text(
-                  'Show me da money',
-                  style: TextStyle(
-                      fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
+            Consumer<Boolprovider>(builder: (context, value, child) {
+              return Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // setState(() {
+                    //   showkey = !showkey;
+                    // });
+                    value.setkey();
+                  },
+                  child: const Text(
+                    'Show me da money',
+                    style: TextStyle(
+                        fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
+                    ),
+                  ),
+                );
+            },),
+            Consumer<Countpro>(builder: (context, value, child) {
+              return Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    value.setcount();
+                  },
+                  child: const Text(
+                    'TRYING pROVIDER',
+                    style: TextStyle(
+                        fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },),
           ],
         ),
       ),

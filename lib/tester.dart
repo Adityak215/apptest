@@ -15,11 +15,11 @@ class _TesterState extends State<Tester> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title:  const Row(
           children: <Widget>[
-            Text('Pussy'),
+            Text('trying'),
             Spacer(),
-            Text('data'),
+            Text('new'),
             Spacer(),
-            Text('wtf'),
+            Text('things'),
             ],)
 
       ),
