@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'attendance.dart';
-import 'personal.dart';
-import 'exam_info.dart';
-import 'dummy.dart';
-import 'Tester.dart';
+import 'Pages/attendance.dart';
+import 'Pages/personal.dart';
+import 'Pages/exam_info.dart';
+import 'Pages/dummy.dart';
+import 'Pages/tester.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key, required this.user, required this.pass})
